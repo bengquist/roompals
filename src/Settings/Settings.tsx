@@ -1,12 +1,12 @@
-import {TabNavigationProp} from '@react-navigation/tab';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Button} from 'react-native';
-import {RootStackParamList} from 'src/App';
+import {RootParamList} from '../Navigation/Routes';
 
-type SettingsScreenNavProp = TabNavigationProp<RootStackParamList, 'Settings'>;
+type SettingsNavProp = BottomTabNavigationProp<RootParamList, 'Settings'>;
 
 type Props = {
-  navigation: SettingsScreenNavProp;
+  navigation: SettingsNavProp;
 };
 
 function Settings({navigation}: Props) {

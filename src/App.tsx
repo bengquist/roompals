@@ -13,13 +13,6 @@ import Routes from './Navigation/Routes';
 
 declare const global: {HermesInternal: null | {}};
 
-export type RootStackParamList = {
-  Responsibility: undefined;
-  Money: undefined;
-  Activity: undefined;
-  Preference: undefined;
-};
-
 const App = () => {
   return <Routes />;
 };

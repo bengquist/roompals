@@ -7,6 +7,13 @@ import Money from '../Money/Money';
 import Responsibility from '../Responsibility/Responsibility';
 import Settings from '../Settings/Settings';
 
+export type RootParamList = {
+  Responsibility: undefined;
+  Money: undefined;
+  Activity: undefined;
+  Settings: undefined;
+};
+
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {

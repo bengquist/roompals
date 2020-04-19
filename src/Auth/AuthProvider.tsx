@@ -1,5 +1,5 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {createContext, useState} from 'react';
-import {AsyncStorage} from 'react-native';
 
 // eslint-disable-next-line no-spaced-func
 export const AuthContext = createContext<{

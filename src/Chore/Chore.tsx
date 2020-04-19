@@ -1,27 +1,34 @@
-import React from 'react';
+import {format} from 'date-fns';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
+import colors from 'src/Style/colors';
 
 interface ChoreProps {}
 
 const Chore: React.FC<ChoreProps> = ({}) => {
+  const [date, setDate] = useState(format(Date.now(), 'yyyy-MM-dd'));
+
+  const onDateSelect = ({dateString}: {dateString: string}) => {
+    setDate(dateString);
+  };
+
+  const markedDates = {
+    [date]: {selected: true},
+  };
+
   return (
     <View>
       <Calendar
-        current={'2020-04-18'}
-        onDayPress={(day) => {
-          console.log('selected day', day);
+        theme={{
+          arrowColor: colors.purple,
+          selectedDayBackgroundColor: colors.purple,
         }}
-        onDayLongPress={(day) => {
-          console.log('selected day', day);
-        }}
-        monthFormat={'MMMM yyyy'}
-        onMonthChange={(month) => {
-          console.log('month changed', month);
-        }}
-        disableMonthChange={true}
+        current={date}
+        markedDates={markedDates}
+        onDayPress={onDateSelect}
       />
-      <Text>Chore</Text>
+      <Text>{date}</Text>
     </View>
   );
 };

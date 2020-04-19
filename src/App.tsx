@@ -8,13 +8,21 @@
  * @format
  */
 
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import Routes from './Navigation/Routes';
+import Providers from './Providers';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
-  return <Routes />;
+  return (
+    <Providers>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </Providers>
+  );
 };
 
 export default App;

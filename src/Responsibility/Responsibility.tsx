@@ -1,12 +1,13 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React from 'react';
-import {Text} from 'react-native';
-
-const Tab = createBottomTabNavigator();
+import React, {useContext} from 'react';
+import {Button, Text} from 'react-native';
+import {AuthContext} from '../Auth/AuthProvider';
 
 function Responsibility() {
+  const {logout} = useContext(AuthContext);
+
   return (
     <>
+      <Button title="Logout" onPress={() => logout()} />
       <Text>Responsibilities</Text>
     </>
   );

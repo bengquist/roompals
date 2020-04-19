@@ -1,15 +1,16 @@
-import React, {useContext} from 'react';
-import {Button, Text} from 'react-native';
-import {AuthContext} from '../Auth/AuthProvider';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import React from 'react';
+import Chore from 'src/Chore/Chore';
+import Grocery from 'src/Grocery/Grocery';
+
+const Tab = createMaterialTopTabNavigator();
 
 function Responsibility() {
-  const {logout} = useContext(AuthContext);
-
   return (
-    <>
-      <Button title="Logout" onPress={() => logout()} />
-      <Text>Responsibilities</Text>
-    </>
+    <Tab.Navigator>
+      <Tab.Screen name="Chores" component={Chore} />
+      <Tab.Screen name="Groceries" component={Grocery} />
+    </Tab.Navigator>
   );
 }
 

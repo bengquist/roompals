@@ -1,10 +1,28 @@
 import {format} from 'date-fns';
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import colors from 'src/Style/colors';
+import ChoreCard from './ChoreCard';
 
 interface ChoreProps {}
+
+const chores = [
+  {
+    emoji: '🚽',
+    owner: 'Blacob',
+    title: 'Clean Bathroom',
+    isCompleted: false,
+    cycleDate: '2020-04-20',
+  },
+  {
+    emoji: '🐈',
+    owner: 'Jessicat',
+    title: 'Clean Kitty Litter',
+    isCompleted: true,
+    cycleDate: '2020-04-21',
+  },
+];
 
 const Chore: React.FC<ChoreProps> = ({}) => {
   const [date, setDate] = useState(format(Date.now(), 'yyyy-MM-dd'));
@@ -14,6 +32,8 @@ const Chore: React.FC<ChoreProps> = ({}) => {
   };
 
   const markedDates = {
+    '2020-04-16': {marked: true},
+    '2020-04-17': {marked: true},
     [date]: {selected: true},
   };
 
@@ -28,7 +48,11 @@ const Chore: React.FC<ChoreProps> = ({}) => {
         markedDates={markedDates}
         onDayPress={onDateSelect}
       />
-      <Text>{date}</Text>
+
+      <FlatList
+        data={chores}
+        renderItem={({item}) => <ChoreCard chore={item} />}
+      />
     </View>
   );
 };

@@ -1,7 +1,7 @@
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Button} from 'react-native';
-import {RootParamList} from '../Navigation/types';
+import {RootParamList} from 'src/Navigation/types';
 
 type SettingsNavProp = BottomTabNavigationProp<RootParamList, 'Settings'>;
 

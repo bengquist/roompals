@@ -24,9 +24,5 @@ export default function Routes() {
     );
   }
 
-  if (!user) {
-    return <AuthRoutes />;
-  }
-
-  return <AppRoutes />;
+  return user ? <AppRoutes /> : <AuthRoutes />;
 }

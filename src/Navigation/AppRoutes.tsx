@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from 'src/Style/colors';
 import Activity from '../Activity/Activity';
 import Money from '../Money/Money';
 import Responsibility from '../Responsibility/Responsibility';
@@ -32,8 +33,9 @@ const AppRoutes: React.FC<AppRoutesProps> = ({}) => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
+        activeTintColor: 'white',
+        inactiveTintColor: colors.purple,
+        activeBackgroundColor: colors.purple,
       }}>
       <Tab.Screen name="Responsibility" component={Responsibility} />
       <Tab.Screen name="Money" component={Money} />

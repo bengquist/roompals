@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import colors from 'src/Style/colors';
 import Activity from '../Activity/Activity';
 import Money from '../Money/Money';
@@ -29,7 +29,7 @@ const AppRoutes: React.FC<AppRoutesProps> = ({}) => {
             iconName = 'cog';
           }
 
-          return <Icon name={iconName} size={size} color={color} />;
+          return <FontAwesomeIcon name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{

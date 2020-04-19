@@ -52,6 +52,7 @@ const Chore: React.FC<ChoreProps> = ({}) => {
       <FlatList
         data={chores}
         renderItem={({item}) => <ChoreCard chore={item} />}
+        keyExtractor={(item) => item.title}
       />
     </View>
   );

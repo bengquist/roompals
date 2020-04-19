@@ -1,6 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 interface CenterProps {}
 
@@ -10,7 +9,7 @@ const Center: React.FC<CenterProps> = ({children}) => {
 
 export default Center;
 
-const Container = styled(View)`
+const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;

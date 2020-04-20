@@ -1,3 +1,5 @@
+import {useQuery} from '@apollo/react-hooks';
+import {gql} from 'apollo-boost';
 import {format} from 'date-fns';
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
@@ -25,8 +27,23 @@ const chores = [
   },
 ];
 
+const GET_CHORES = gql`
+  query {
+    chores {
+      id
+      owner
+      title
+      cycleDate
+      emoji
+    }
+  }
+`;
+
 const Chore: React.FC<ChoreProps> = ({}) => {
+  const {error, data} = useQuery(GET_CHORES);
   const [date, setDate] = useState<Date>(new Date(Date.now()));
+
+  console.log(error, data);
 
   const onDateSelect = ({dateString}: {dateString: string}) => {
     const newDate = new Date(dateString);

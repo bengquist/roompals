@@ -1,3 +1,6 @@
+import {ApolloProvider} from '@apollo/react-hooks';
+import {HttpLink, InMemoryCache} from 'apollo-boost';
+import {ApolloClient} from 'apollo-client';
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import AuthProvider from './Auth/AuthProvider';
@@ -5,11 +8,20 @@ import theme from './Style/theme';
 
 interface ProvidersProps {}
 
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: 'http://localhost:8163/graphql',
+  }),
+  cache: new InMemoryCache(),
+});
+
 const Providers: React.FC<ProvidersProps> = ({children}) => {
   return (
-    <AuthProvider>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </AuthProvider>
+    <ApolloProvider client={client}>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </AuthProvider>
+    </ApolloProvider>
   );
 };
 

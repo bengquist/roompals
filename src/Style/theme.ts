@@ -1,5 +1,10 @@
+import {DefaultTheme} from 'styled-components';
 import colors from './colors';
 
-export default {
-  primaryColor: colors.purple,
+const theme: DefaultTheme = {
+  colors: {
+    primary: colors.purple,
+  },
 };
+
+export default theme;

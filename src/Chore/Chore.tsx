@@ -1,9 +1,9 @@
-import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
-import {format} from 'date-fns';
-import React, {useState} from 'react';
-import {FlatList, View} from 'react-native';
-import {Calendar} from 'react-native-calendars';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+import { format } from 'date-fns';
+import React, { useState } from 'react';
+import { FlatList, View } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 import colors from 'src/Style/colors';
 import styled from 'styled-components/native';
 import ChoreCard from './ChoreCard';
@@ -28,10 +28,9 @@ const chores = [
 ];
 
 const GET_CHORES = gql`
-  query {
+  query Chores {
     chores {
       id
-      owner
       title
       cycleDate
       emoji

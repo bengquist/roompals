@@ -11,6 +11,10 @@ interface ProvidersProps {}
 const client = new ApolloClient({
   link: new HttpLink({
     uri: 'http://localhost:8163/graphql',
+    credentials: 'include',
+    // headers: {
+    //   authorization: 'bearer ayy',
+    // },
   }),
   cache: new InMemoryCache(),
 });

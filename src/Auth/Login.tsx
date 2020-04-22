@@ -25,12 +25,12 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
       <Padding>
         <LoginInput
           placeholder="Email or username"
-          onChange={(text) => setUser(text)}
+          onChangeText={(text) => setUser(text)}
           value={user}
         />
         <LoginInput
           placeholder="Password"
-          onChange={(text) => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           value={password}
         />
         <Button onPress={() => login('blake')}>Log In</Button>

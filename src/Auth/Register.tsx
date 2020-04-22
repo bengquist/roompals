@@ -20,22 +20,22 @@ const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
       <Padding>
         <LoginInput
           placeholder="Username"
-          onChange={(text) => setUser(text)}
+          onChangeText={(text) => setUser(text)}
           value={user}
         />
         <LoginInput
           placeholder="Email"
-          onChange={(text) => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           value={email}
         />
         <LoginInput
           placeholder="Password"
-          onChange={(text) => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           value={password}
         />
         <LoginInput
           placeholder="Confirm Password"
-          onChange={(text) => setConfirmPassword(text)}
+          onChangeText={(text) => setConfirmPassword(text)}
           value={confirmPassword}
         />
         <Button onPress={() => login('blake')}>Sign Up</Button>

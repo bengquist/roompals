@@ -17,7 +17,7 @@ const Login: React.FC<AuthNavProps<'Login'>> = () => {
   return (
     <Container>
       <Center>
-        <Text>roompals</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 40}}>roompals</Text>
       </Center>
 
       <Padding>
@@ -44,7 +44,7 @@ const Login: React.FC<AuthNavProps<'Login'>> = () => {
       </Center>
 
       <Center>
-        <Text>Don't have an account?</Text>
+        <Text style={{marginBottom: 24}}>Don't have an account?</Text>
         <Button onPress={() => login('blake')}>Sign Up</Button>
       </Center>
     </Container>
@@ -66,5 +66,5 @@ const SocialContainer = styled.View`
 `;
 
 const LoginInput = styled(Input)`
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 `;

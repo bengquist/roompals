@@ -3,15 +3,15 @@ import {Text} from 'react-native';
 import Button from 'src/Style/Button';
 import Center from 'src/Style/Center';
 import CircleIconButton from 'src/Style/CircleIconButton';
-import Input from 'src/Style/Input';
 import Padding from 'src/Style/Padding';
 import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
+import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
-  const [user, setUser] = useState();
-  const [password, setPassword] = useState();
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
   const {login} = useContext(AuthContext);
 
   return (
@@ -24,7 +24,6 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
 
       <Padding>
         <LoginInput
-          style={{marginBottom: 16}}
           placeholder="Email or username"
           onChange={(text) => setUser(text)}
           value={user}
@@ -58,15 +57,4 @@ export default Login;
 const Container = styled.View`
   height: 100%;
   justify-content: space-between;
-`;
-
-const SocialContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 200px;
-`;
-
-const LoginInput = styled(Input)`
-  margin-bottom: 24px;
 `;

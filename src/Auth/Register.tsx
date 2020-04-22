@@ -1,16 +1,59 @@
-import React, {useContext} from 'react';
-import {Button, Text, View} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {Text, View} from 'react-native';
+import Button from 'src/Style/Button';
+import Center from 'src/Style/Center';
+import CircleIconButton from 'src/Style/CircleIconButton';
+import Padding from 'src/Style/Padding';
 import {AuthContext} from './AuthProvider';
+import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const {login} = useContext(AuthContext);
 
   return (
     <View>
-      <Text onPress={() => navigation.navigate('Login')}>Go to login</Text>
-      <Text>or</Text>
-      <Button title="Register" onPress={() => login('blake')} />
+      <Padding>
+        <LoginInput
+          placeholder="Username"
+          onChange={(text) => setUser(text)}
+          value={user}
+        />
+        <LoginInput
+          placeholder="Email"
+          onChange={(text) => setEmail(text)}
+          value={email}
+        />
+        <LoginInput
+          placeholder="Password"
+          onChange={(text) => setPassword(text)}
+          value={password}
+        />
+        <LoginInput
+          placeholder="Confirm Password"
+          onChange={(text) => setConfirmPassword(text)}
+          value={confirmPassword}
+        />
+        <Button onPress={() => login('blake')}>Sign Up</Button>
+      </Padding>
+
+      <Center>
+        <Text>or</Text>
+      </Center>
+
+      <Padding>
+        <Center>
+          <SocialContainer>
+            <CircleIconButton icon="facebook" />
+            <CircleIconButton icon="twitter" />
+            <CircleIconButton icon="google" />
+          </SocialContainer>
+        </Center>
+      </Padding>
     </View>
   );
 };

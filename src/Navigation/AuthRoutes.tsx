@@ -9,9 +9,17 @@ const Stack = createStackNavigator();
 
 const AuthRoutes: React.FC<AuthRoutesProps> = ({}) => {
   return (
-    <Stack.Navigator screenOptions={{header: () => null}}>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
+      <Stack.Screen
+        options={{header: () => null}}
+        name="Login"
+        component={Login}
+      />
+      <Stack.Screen
+        options={{headerTitle: 'Sign Up'}}
+        name="Register"
+        component={Register}
+      />
     </Stack.Navigator>
   );
 };

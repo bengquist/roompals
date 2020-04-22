@@ -7,7 +7,7 @@ import Padding from 'src/Style/Padding';
 import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
-const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
+const Register: React.FC<AuthNavProps<'Register'>> = () => {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

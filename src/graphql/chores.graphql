@@ -1,0 +1,6 @@
+query Chores {
+  users {
+    id
+    username
+  }
+}

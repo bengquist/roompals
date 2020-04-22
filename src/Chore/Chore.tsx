@@ -1,9 +1,8 @@
-import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
 import {format} from 'date-fns';
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
+import {useChoresQuery} from 'src/generated/graphql';
 import colors from 'src/Style/colors';
 import styled from 'styled-components/native';
 import ChoreCard from './ChoreCard';
@@ -27,17 +26,8 @@ const chores = [
   },
 ];
 
-const GET_CHORES = gql`
-  query Chores {
-    users {
-      id
-      username
-    }
-  }
-`;
-
 const Chore: React.FC<ChoreProps> = ({}) => {
-  const {error, data} = useQuery(GET_CHORES);
+  const {error, data} = useChoresQuery();
   const [date, setDate] = useState<Date>(new Date(Date.now()));
 
   console.log(error, data);

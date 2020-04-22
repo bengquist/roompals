@@ -1,3 +1,4 @@
+import {useMutation} from '@apollo/react-hooks';
 import React, {useContext, useState} from 'react';
 import {Text} from 'react-native';
 import Button from 'src/Style/Button';
@@ -6,34 +7,52 @@ import CircleIconButton from 'src/Style/CircleIconButton';
 import Padding from 'src/Style/Padding';
 import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
+import {LOG_IN} from './mutations';
 import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
-  const [user, setUser] = useState('');
+  const [login] = useMutation(LOG_IN);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {login} = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState('');
+  const {setUser} = useContext(AuthContext);
+
+  const loginHandler = async () => {
+    try {
+      const res = await login({
+        variables: {user: username, password: password},
+      });
+      setUser(res.data.login.accessToken);
+    } catch (err) {
+      setErrorMessage(err.graphQLErrors[0].message);
+    }
+  };
+
+  console.log(errorMessage);
 
   return (
     <Container>
-      <Padding>
-        <Center>
-          <Text style={{fontWeight: 'bold', fontSize: 40}}>roompals</Text>
-        </Center>
-      </Padding>
+      <Banner>
+        <BannerText>roompals</BannerText>
+      </Banner>
 
       <Padding>
+        <Text>{errorMessage}</Text>
         <LoginInput
+          textContentType="username"
           placeholder="Email or username"
-          onChangeText={(text) => setUser(text)}
-          value={user}
+          onChangeText={(text) => setUsername(text)}
+          value={username}
         />
         <LoginInput
+          textContentType="password"
+          secureTextEntry={true}
           placeholder="Password"
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <Button onPress={() => login('blake')}>Log In</Button>
+        <Button onPress={loginHandler}>Log In</Button>
       </Padding>
 
       <Center>
@@ -57,4 +76,17 @@ export default Login;
 const Container = styled.View`
   height: 100%;
   justify-content: space-between;
+`;
+
+const Banner = styled.View`
+  background: ${(props) => props.theme.colors.primary};
+  align-items: center;
+  padding-top: 72px;
+  padding-bottom: 16px;
+`;
+
+const BannerText = styled.Text`
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
 `;

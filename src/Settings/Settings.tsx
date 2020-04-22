@@ -9,11 +9,11 @@ import {AuthContext} from 'src/Auth/AuthProvider';
 // };
 
 function Settings() {
-  const {logout} = useContext(AuthContext);
+  const {removeUser} = useContext(AuthContext);
 
   return (
     <>
-      <Button title="Logout" onPress={logout} />
+      <Button title="Logout" onPress={removeUser} />
     </>
   );
 }

@@ -1,10 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import Button from 'src/Style/Button';
 import Center from 'src/Style/Center';
 import CircleIconButton from 'src/Style/CircleIconButton';
 import Padding from 'src/Style/Padding';
-import {AuthContext} from './AuthProvider';
 import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
@@ -13,7 +12,6 @@ const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const {login} = useContext(AuthContext);
 
   return (
     <View>
@@ -38,7 +36,7 @@ const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
           onChangeText={(text) => setConfirmPassword(text)}
           value={confirmPassword}
         />
-        <Button onPress={() => login('blake')}>Sign Up</Button>
+        <Button onPress={() => console.log('yo')}>Sign Up</Button>
       </Padding>
 
       <Center>

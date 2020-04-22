@@ -10,7 +10,6 @@ const Center: React.FC<CenterProps> = ({children}) => {
 export default Center;
 
 const Container = styled.View`
-  flex: 1;
   justify-content: center;
   align-items: center;
 `;

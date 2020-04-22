@@ -4,41 +4,42 @@ import React, {createContext, useState} from 'react';
 // eslint-disable-next-line no-spaced-func
 export const AuthContext = createContext<{
   user: string | null;
-  login: (userId: string) => void;
-  logout: () => void;
+  setUser: (userId: string) => void;
+  removeUser: () => void;
   getUser: () => void;
 }>({
   user: 'blake',
-  login: () => {},
-  logout: () => {},
+  setUser: () => {},
+  removeUser: () => {},
   getUser: () => {},
 });
 
 interface AuthProviderProps {}
 
 const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
-  const [user, setUser] = useState<string | null>(null);
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
 
   const getUser = async () => {
-    const userId = user || (await AsyncStorage.getItem('user'));
+    const userId = currentUser || (await AsyncStorage.getItem('user'));
 
     if (userId) {
-      setUser(userId);
+      setCurrentUser(userId);
     }
   };
 
-  const login = (userId: string) => {
-    setUser(userId);
+  const setUser = (userId: string) => {
+    setCurrentUser(userId);
     AsyncStorage.setItem('user', JSON.stringify(userId));
   };
 
-  const logout = () => {
-    setUser(null);
+  const removeUser = () => {
+    setCurrentUser(null);
     AsyncStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{user, login, logout, getUser}}>
+    <AuthContext.Provider
+      value={{user: currentUser, setUser, removeUser, getUser}}>
       {children}
     </AuthContext.Provider>
   );

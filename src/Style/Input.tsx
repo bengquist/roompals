@@ -1,11 +1,11 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+import { TextInputProps } from 'react-native';
 import styled from 'styled-components/native';
 
 interface InputProps extends TextInputProps {}
 
 const Input: React.FC<InputProps> = (props) => {
-  return <Container {...props} />;
+  return <Container autoCapitalize="none" {...props} />;
 };
 
 export default Input;

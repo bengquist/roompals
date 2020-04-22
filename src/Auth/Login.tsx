@@ -19,10 +19,11 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
 
   const loginHandler = async () => {
     try {
-      const res = await login({
+      const {data} = await login({
         variables: {user: username, password: password},
       });
-      setUser(res.data.login.accessToken);
+
+      if (data) setUser(data.login.accessToken);
     } catch (err) {
       setErrorMessage(err.graphQLErrors[0].message);
     }

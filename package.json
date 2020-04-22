@@ -22,6 +22,7 @@
     "apollo-client": "^2.6.8",
     "date-fns": "^2.12.0",
     "graphql": "^15.0.0",
+    "jwt-decode": "^2.2.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-calendars": "^1.265.0",
@@ -37,6 +38,9 @@
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "@graphql-codegen/cli": "1.13.3",
+    "@graphql-codegen/typescript": "1.13.3",
+    "@graphql-codegen/typescript-operations": "1.13.3",
+    "@graphql-codegen/typescript-react-apollo": "1.13.3",
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/date-fns": "^2.6.0",
     "@types/jest": "^24.0.24",
@@ -54,10 +58,7 @@
     "metro-react-native-babel-preset": "^0.58.0",
     "prettier": "^2.0.4",
     "react-test-renderer": "16.11.0",
-    "typescript": "^3.8.3",
-    "@graphql-codegen/typescript": "1.13.3",
-    "@graphql-codegen/typescript-operations": "1.13.3",
-    "@graphql-codegen/typescript-react-apollo": "1.13.3"
+    "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native",

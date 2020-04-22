@@ -1,18 +1,17 @@
-import {useMutation} from '@apollo/react-hooks';
 import React, {useContext, useState} from 'react';
 import {Text} from 'react-native';
+import {useLogInMutation} from 'src/generated/graphql';
 import Button from 'src/Style/Button';
 import Center from 'src/Style/Center';
 import CircleIconButton from 'src/Style/CircleIconButton';
 import Padding from 'src/Style/Padding';
 import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
-import {LOG_IN} from './mutations';
 import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
-  const [login] = useMutation(LOG_IN);
+  const [login] = useLogInMutation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');

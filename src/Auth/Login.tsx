@@ -9,16 +9,18 @@ import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
 import {AuthNavProps} from './types';
 
-const Login: React.FC<AuthNavProps<'Login'>> = () => {
+const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
   const {login} = useContext(AuthContext);
 
   return (
     <Container>
-      <Center>
-        <Text style={{fontWeight: 'bold', fontSize: 40}}>roompals</Text>
-      </Center>
+      <Padding>
+        <Center>
+          <Text style={{fontWeight: 'bold', fontSize: 40}}>roompals</Text>
+        </Center>
+      </Padding>
 
       <Padding>
         <LoginInput
@@ -45,7 +47,7 @@ const Login: React.FC<AuthNavProps<'Login'>> = () => {
 
       <Center>
         <Text style={{marginBottom: 24}}>Don't have an account?</Text>
-        <Button onPress={() => login('blake')}>Sign Up</Button>
+        <Button onPress={() => navigation.navigate('Register')}>Sign Up</Button>
       </Center>
     </Container>
   );

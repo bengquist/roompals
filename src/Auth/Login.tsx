@@ -12,10 +12,10 @@ import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
   const [login] = useLogInMutation();
+  const {setUser} = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const {setUser} = useContext(AuthContext);
 
   const loginHandler = async () => {
     try {

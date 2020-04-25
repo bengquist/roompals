@@ -1,16 +1,16 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import jwtDecode from 'jwt-decode';
 import React, {createContext, useState} from 'react';
+import {removeAccessToken, setAccessToken} from './accessToken';
 import {TokenData} from './types';
 
-// eslint-disable-next-line no-spaced-func
 export const AuthContext = createContext<{
   user: string | null;
   setUser: (userId: string) => void;
   removeUser: () => void;
   getUser: () => void;
 }>({
-  user: 'blake',
+  user: '',
   setUser: () => {},
   removeUser: () => {},
   getUser: () => {},
@@ -33,12 +33,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
     const {userId} = jwtDecode<TokenData>(token);
 
     setCurrentUser(userId);
-    AsyncStorage.setItem('user', token);
+    setAccessToken(token);
   };
 
   const removeUser = () => {
     setCurrentUser(null);
-    AsyncStorage.removeItem('user');
+    removeAccessToken();
   };
 
   return (

@@ -11,7 +11,10 @@ export default function Routes() {
 
   useEffect(() => {
     (async () => {
-      await getUser();
+      const data = await getUser();
+
+      console.log(data);
+
       setLoading(false);
     })();
   }, [getUser]);

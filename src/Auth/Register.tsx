@@ -1,3 +1,4 @@
+import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import {useSignUpMutation} from 'src/generated/graphql';
@@ -8,63 +9,76 @@ import Padding from 'src/Style/Padding';
 import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
+const defaultValues = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
 const Register: React.FC<AuthNavProps<'Register'>> = () => {
   const [signup] = useSignUpMutation();
   const [errorMessage, setErrorMessage] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const signupHandler = async () => {
+  const signupHandler = async (values) => {
+    console.log(values);
+
     try {
-      await signup({variables: {username, email, password}});
+      await signup({variables: values});
     } catch (err) {
       setErrorMessage(err.graphQLErrors[0].message);
     }
   };
 
   return (
-    <View>
-      <Padding>
-        <Text>{errorMessage}</Text>
-        <LoginInput
-          placeholder="Username"
-          onChangeText={(text) => setUsername(text)}
-          value={username}
-        />
-        <LoginInput
-          placeholder="Email"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-        />
-        <LoginInput
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-        />
-        <LoginInput
-          placeholder="Confirm Password"
-          onChangeText={(text) => setConfirmPassword(text)}
-          value={confirmPassword}
-        />
-        <Button onPress={signupHandler}>Sign Up</Button>
-      </Padding>
+    <Formik initialValues={defaultValues} onSubmit={signupHandler}>
+      {({handleChange, handleBlur, handleSubmit, values}) => (
+        <View>
+          <Padding>
+            <Text>{errorMessage}</Text>
+            <LoginInput
+              placeholder="Username"
+              onChangeText={handleChange('username')}
+              onBlur={handleBlur('username')}
+              value={values.username}
+            />
+            <LoginInput
+              placeholder="Email"
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+            />
+            <LoginInput
+              placeholder="Password"
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+            />
+            <LoginInput
+              placeholder="Confirm Password"
+              onChangeText={handleChange('confirmPassword')}
+              onBlur={handleBlur('confirmPassword')}
+              value={values.confirmPassword}
+            />
+            <Button onPress={handleSubmit}>Sign Up</Button>
+          </Padding>
 
-      <Center>
-        <Text>or</Text>
-      </Center>
+          <Center>
+            <Text>or</Text>
+          </Center>
 
-      <Padding>
-        <Center>
-          <SocialContainer>
-            <CircleIconButton icon="facebook" />
-            <CircleIconButton icon="twitter" />
-            <CircleIconButton icon="google" />
-          </SocialContainer>
-        </Center>
-      </Padding>
-    </View>
+          <Padding>
+            <Center>
+              <SocialContainer>
+                <CircleIconButton icon="facebook" />
+                <CircleIconButton icon="twitter" />
+                <CircleIconButton icon="google" />
+              </SocialContainer>
+            </Center>
+          </Padding>
+        </View>
+      )}
+    </Formik>
   );
 };
 

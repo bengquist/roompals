@@ -9,12 +9,14 @@ import theme from './Style/theme';
 
 interface ProvidersProps {}
 
+const accessToken = getAccessToken();
+
 const client = new ApolloClient({
   link: new HttpLink({
     uri: 'http://localhost:8163/graphql',
     credentials: 'include',
     headers: {
-      authorization: `bearer ${getAccessToken}`,
+      authorization: `bearer ${accessToken}`,
     },
   }),
   cache: new InMemoryCache(),

@@ -1,7 +1,6 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import jwtDecode from 'jwt-decode';
 import React, {createContext, useState} from 'react';
-import {removeAccessToken, setAccessToken} from './accessToken';
+import {getAccessToken, removeAccessToken, setAccessToken} from './accessToken';
 import {TokenData} from './types';
 
 export const AuthContext = createContext<{
@@ -22,7 +21,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
 
   const getUser = async () => {
-    const userId = currentUser || (await AsyncStorage.getItem('user'));
+    const userId = currentUser || getAccessToken();
 
     if (userId) {
       setCurrentUser(userId);

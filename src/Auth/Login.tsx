@@ -29,8 +29,6 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
     }
   };
 
-  console.log(errorMessage);
-
   return (
     <Container>
       <Banner>

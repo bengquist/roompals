@@ -27,10 +27,8 @@ const chores = [
 ];
 
 const Chore: React.FC<ChoreProps> = ({}) => {
-  const {error, data} = useChoresQuery();
+  const {data} = useChoresQuery();
   const [date, setDate] = useState<Date>(new Date(Date.now()));
-
-  console.log(error, data);
 
   const onDateSelect = ({dateString}: {dateString: string}) => {
     const newDate = new Date(dateString);

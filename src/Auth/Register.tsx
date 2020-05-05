@@ -21,8 +21,6 @@ const Register: React.FC<AuthNavProps<'Register'>> = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const signupHandler = async (values) => {
-    console.log(values);
-
     try {
       await signup({variables: values});
     } catch (err) {

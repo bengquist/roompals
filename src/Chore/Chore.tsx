@@ -2,7 +2,6 @@ import {format} from 'date-fns';
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
-import {useChoresQuery} from 'src/generated/graphql';
 import colors from 'src/Style/colors';
 import styled from 'styled-components/native';
 import ChoreCard from './ChoreCard';
@@ -27,7 +26,6 @@ const chores = [
 ];
 
 const Chore: React.FC<ChoreProps> = ({}) => {
-  const {data} = useChoresQuery();
   const [date, setDate] = useState<Date>(new Date(Date.now()));
 
   const onDateSelect = ({dateString}: {dateString: string}) => {

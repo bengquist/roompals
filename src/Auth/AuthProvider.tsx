@@ -1,3 +1,4 @@
+import cookies from '@react-native-community/cookies';
 import jwtDecode from 'jwt-decode';
 import React, {createContext, useEffect, useState} from 'react';
 import {AsyncStorage} from 'react-native';
@@ -45,8 +46,6 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   const setUser = async (token: string) => {
     const {userId} = jwtDecode<TokenData>(token);
 
-    console.log('setUser: ', token);
-
     await AsyncStorage.setItem('token', token);
     setCurrentUser(userId);
     setCurrentToken(token);
@@ -54,6 +53,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
 
   const removeUser = async () => {
     await AsyncStorage.removeItem('token');
+    cookies.clearAll();
+
     setCurrentUser(null);
     setCurrentToken(null);
   };

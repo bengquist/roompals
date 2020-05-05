@@ -18,7 +18,10 @@ export default function Routes() {
         credentials: 'include',
       }).then(async (res) => {
         const {accessToken} = await res.json();
-        await setUser(accessToken);
+
+        if (accessToken) {
+          await setUser(accessToken);
+        }
 
         setLoading(false);
       });
@@ -31,7 +34,7 @@ export default function Routes() {
     return <Text>Loading...</Text>;
   }
 
-  console.log(currentToken);
+  console.log('Routes: ', currentToken);
 
   const client = new ApolloClient({
     link: new HttpLink({

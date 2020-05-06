@@ -11,8 +11,8 @@ import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
-  const [login] = useLogInMutation();
   const {setUser} = useContext(AuthContext);
+  const [login] = useLogInMutation();
   const [errorMessage, setErrorMessage] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +23,9 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
         variables: {user: username, password: password},
       });
 
-      if (data) setUser(data.login.accessToken);
+      if (data?.login.accessToken) {
+        setUser(data?.login.accessToken);
+      }
     } catch (err) {
       setErrorMessage(err.graphQLErrors[0].message);
     }

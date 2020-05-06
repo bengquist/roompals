@@ -2,9 +2,19 @@
  * @format
  */
 
+import React from 'react';
 import {AppRegistry} from 'react-native';
 import 'react-native-gesture-handler';
+import App from 'src/App';
+import AuthProvider from 'src/Auth/AuthProvider';
 import {name as appName} from './app.json';
-import App from './src/App';
 
-AppRegistry.registerComponent(appName, () => App);
+const Root = () => {
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
+};
+
+AppRegistry.registerComponent(appName, () => Root);

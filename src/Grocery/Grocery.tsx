@@ -5,7 +5,7 @@ import {useUsersQuery} from 'src/generated/graphql';
 interface GroceryProps {}
 
 const Grocery: React.FC<GroceryProps> = ({}) => {
-  const {error, data, loading} = useUsersQuery();
+  const {error, data, loading} = useUsersQuery({fetchPolicy: 'network-only'});
 
   if (loading) return <Text>Loading...</Text>;
 

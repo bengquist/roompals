@@ -1,67 +1,36 @@
-import cookies from '@react-native-community/cookies';
-import jwtDecode from 'jwt-decode';
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {createContext, useEffect, useState} from 'react';
-import {AsyncStorage} from 'react-native';
-import {TokenData} from './types';
 
 export const AuthContext = createContext<{
-  currentUser: string | null;
-  currentToken: string | null;
+  accessToken?: string;
   setUser: (userId: string) => void;
-  removeUser: () => void;
-  getUser: () => void;
 }>({
-  currentUser: '',
-  currentToken: '',
+  accessToken: '',
   setUser: () => {},
-  removeUser: () => {},
-  getUser: () => {},
 });
 
 interface AuthProviderProps {}
 
 const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
-  const [currentToken, setCurrentToken] = useState<string | null>(null);
+  const [accessToken, setAccessToken] = useState('');
 
   useEffect(() => {
     (async () => {
       const token = await AsyncStorage.getItem('token');
 
       if (token) {
-        const {userId} = jwtDecode<TokenData>(token);
-
-        setCurrentUser(userId);
-        setCurrentToken(token);
+        setUser(token);
       }
     })();
   }, []);
 
-  const getUser = async () => {
-    const token = await AsyncStorage.getItem('token');
-
-    return currentUser || token;
-  };
-
   const setUser = async (token: string) => {
-    const {userId} = jwtDecode<TokenData>(token);
-
     await AsyncStorage.setItem('token', token);
-    setCurrentUser(userId);
-    setCurrentToken(token);
-  };
-
-  const removeUser = async () => {
-    await AsyncStorage.removeItem('token');
-    cookies.clearAll();
-
-    setCurrentUser(null);
-    setCurrentToken(null);
+    setAccessToken(token);
   };
 
   return (
-    <AuthContext.Provider
-      value={{currentUser, currentToken, setUser, removeUser, getUser}}>
+    <AuthContext.Provider value={{accessToken, setUser}}>
       {children}
     </AuthContext.Provider>
   );

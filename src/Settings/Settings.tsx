@@ -1,6 +1,8 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {useContext} from 'react';
 import {Button} from 'react-native';
 import {AuthContext} from 'src/Auth/AuthProvider';
+import {useLogoutMutation} from 'src/generated/graphql';
 
 // type SettingsNavProp = BottomTabNavigationProp<RootParamList, 'Settings'>;
 
@@ -9,11 +11,19 @@ import {AuthContext} from 'src/Auth/AuthProvider';
 // };
 
 function Settings() {
-  const {removeUser} = useContext(AuthContext);
+  const {setUser} = useContext(AuthContext);
+  const [logout, {client}] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    await logout();
+    await AsyncStorage.removeItem('token');
+    setUser('');
+    await client?.resetStore();
+  };
 
   return (
     <>
-      <Button title="Logout" onPress={removeUser} />
+      <Button title="Logout" onPress={logoutHandler} />
     </>
   );
 }

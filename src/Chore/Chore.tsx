@@ -1,7 +1,8 @@
 import {format} from 'date-fns';
 import React, {useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
+import BottomSheet from 'reanimated-bottom-sheet';
 import colors from 'src/Style/colors';
 import styled from 'styled-components/native';
 import ChoreCard from './ChoreCard';
@@ -62,6 +63,12 @@ const Chore: React.FC<ChoreProps> = ({}) => {
           keyExtractor={(item) => item.title}
         />
       </ListContainer>
+
+      <BottomSheet
+        snapPoints={[450, 300, 0]}
+        renderContent={() => <Text>Hello</Text>}
+        renderHeader={() => <Text>Header</Text>}
+      />
     </View>
   );
 };

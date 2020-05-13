@@ -3,7 +3,7 @@ import colors from './colors';
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: colors.purple,
+    primary: colors.blueGreen,
   },
 };
 

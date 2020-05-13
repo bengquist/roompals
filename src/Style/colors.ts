@@ -1,3 +1,6 @@
 export default {
-  purple: '#B9B1D6',
+  blueGreen: '#63b7af',
+  blue: '#abf0e9',
+  lightBlue: '#d4f3ef',
+  coral: '#ee8572',
 };

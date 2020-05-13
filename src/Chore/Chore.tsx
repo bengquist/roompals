@@ -4,7 +4,7 @@ import {FlatList, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import BottomModal from 'src/Modal/BottomModal';
 import colors from 'src/Style/colors';
-import FloatingButton from 'src/Style/FloatingButton';
+import FloatingButtonView from 'src/Style/FloatingButtonView';
 import styled from 'styled-components/native';
 import ChoreCard from './ChoreCard';
 
@@ -45,29 +45,30 @@ const Chore: React.FC<ChoreProps> = ({}) => {
   };
 
   return (
-    <View>
-      <Calendar
-        theme={{
-          arrowColor: colors.purple,
-          selectedDayBackgroundColor: colors.purple,
-        }}
-        current={date}
-        markedDates={markedDates}
-        onDayPress={onDateSelect}
-      />
-
-      <ListContainer>
-        <ListTitle>{format(date, 'EEEE, MMMM do')}</ListTitle>
-        <FlatList
-          data={chores}
-          renderItem={({item}) => <ChoreCard chore={item} />}
-          keyExtractor={(item) => item.title}
+    <FloatingButtonView>
+      <View>
+        <Calendar
+          theme={{
+            arrowColor: colors.blueGreen,
+            selectedDayBackgroundColor: colors.blueGreen,
+          }}
+          current={date}
+          markedDates={markedDates}
+          onDayPress={onDateSelect}
         />
-      </ListContainer>
 
-      <FloatingButton />
-      <BottomModal />
-    </View>
+        <ListContainer>
+          <ListTitle>{format(date, 'EEEE, MMMM do')}</ListTitle>
+          <FlatList
+            data={chores}
+            renderItem={({item}) => <ChoreCard chore={item} />}
+            keyExtractor={(item) => item.title}
+          />
+        </ListContainer>
+
+        <BottomModal />
+      </View>
+    </FloatingButtonView>
   );
 };
 

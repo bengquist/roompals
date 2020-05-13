@@ -34,8 +34,8 @@ const AppRoutes: React.FC<AppRoutesProps> = ({}) => {
       })}
       tabBarOptions={{
         activeTintColor: 'white',
-        inactiveTintColor: colors.purple,
-        activeBackgroundColor: colors.purple,
+        inactiveTintColor: colors.blueGreen,
+        activeBackgroundColor: colors.blueGreen,
       }}>
       <Tab.Screen name="Responsibility" component={Responsibility} />
       <Tab.Screen name="Money" component={Money} />

@@ -1,10 +1,13 @@
 import {DefaultTheme} from 'styled-components';
 import colors from './colors';
 
-const theme: DefaultTheme = {
+export const theme: DefaultTheme = {
   colors: {
     primary: colors.purple,
   },
 };
 
-export default theme;
+export default interface ThemeInterface {
+  primaryColor: string;
+  primaryColorInverted: string;
+}

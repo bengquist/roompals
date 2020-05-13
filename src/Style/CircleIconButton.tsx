@@ -13,7 +13,7 @@ interface CircleIconButtonProps extends TouchableOpacityProps {
 
 const CircleIconButton: React.FC<CircleIconButtonProps> = ({
   icon,
-  buttonSize = 48,
+  buttonSize = 40,
   iconSize = 20,
   iconColor = 'white',
   ...props

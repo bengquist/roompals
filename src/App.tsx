@@ -21,7 +21,7 @@ import {default as React, useContext, useState} from 'react';
 import {ThemeProvider} from 'styled-components';
 import {AuthContext} from './Auth/AuthProvider';
 import Routes from './Navigation/Routes';
-import theme from './Style/theme';
+import {theme} from './Style/theme';
 
 declare const global: {HermesInternal: null | {}};
 

@@ -35,7 +35,7 @@ export default CircleIconButton;
 const Container = styled.TouchableOpacity<{size: number}>`
   height: ${({size}) => size}px;
   width: ${({size}) => size}px;
-  background: ${colors.blueGreen};
+  background: ${colors.coral};
   border-radius: 100px;
   justify-content: center;
   align-items: center;

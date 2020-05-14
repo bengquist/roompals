@@ -3,4 +3,5 @@ export default {
   blue: '#abf0e9',
   lightBlue: '#d4f3ef',
   coral: '#ee8572',
+  white: '#fff',
 };

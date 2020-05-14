@@ -2,7 +2,6 @@ import {format} from 'date-fns';
 import React, {useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
-import BottomModal from 'src/Modal/BottomModal';
 import colors from 'src/Style/colors';
 import FloatingButtonView from 'src/Style/FloatingButtonView';
 import styled from 'styled-components/native';
@@ -49,8 +48,8 @@ const Chore: React.FC<ChoreProps> = ({}) => {
       <View>
         <Calendar
           theme={{
-            arrowColor: colors.blueGreen,
-            selectedDayBackgroundColor: colors.blueGreen,
+            arrowColor: colors.blue,
+            selectedDayBackgroundColor: colors.blue,
           }}
           current={date}
           markedDates={markedDates}
@@ -65,8 +64,6 @@ const Chore: React.FC<ChoreProps> = ({}) => {
             keyExtractor={(item) => item.title}
           />
         </ListContainer>
-
-        <BottomModal />
       </View>
     </FloatingButtonView>
   );

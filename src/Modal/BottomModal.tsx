@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Modal, StyleSheet, TouchableHighlight, View} from 'react-native';
+import {Alert, Modal, View} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import CenterBottom from 'src/Style/CenterBottom';
 import colors from 'src/Style/colors';
@@ -7,17 +7,19 @@ import HeaderText from 'src/Style/HeaderText';
 import styled from 'styled-components/native';
 
 interface BottomModalProps {
+  headerText: string;
   isVisible?: boolean;
   onDismiss: () => void;
 }
 
 const BottomModal: React.FC<BottomModalProps> = ({
+  headerText,
   isVisible,
   onDismiss,
   children,
 }) => {
   return (
-    <View style={styles.centeredView}>
+    <CenterBottom>
       <Modal
         animationType="slide"
         transparent={true}
@@ -26,50 +28,27 @@ const BottomModal: React.FC<BottomModalProps> = ({
           Alert.alert('Modal has been closed.');
         }}>
         <CenterBottom>
-          <View style={styles.modalView}>
+          <ModalView>
             <Header>
-              <HeaderText>Create</HeaderText>
+              <HeaderText>{headerText}</HeaderText>
               <IconContainer onPress={() => onDismiss()}>
                 <FontAwesomeIcon name="times" size={28} color={colors.white} />
               </IconContainer>
             </Header>
 
-            <TouchableHighlight
-              style={{...styles.openButton, backgroundColor: '#2196F3'}}>
-              {children}
-            </TouchableHighlight>
-          </View>
+            <View>{children}</View>
+          </ModalView>
         </CenterBottom>
       </Modal>
-    </View>
+    </CenterBottom>
   );
 };
 
-const styles = StyleSheet.create({
-  modalView: {
-    width: '100%',
-    backgroundColor: 'white',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
+const ModalView = styled.View`
+  width: 100%;
+  background: white;
+  align-items: center;
+`;
 
 const Header = styled.View`
   position: relative;

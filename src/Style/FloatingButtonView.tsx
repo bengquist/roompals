@@ -14,7 +14,10 @@ const FloatingButtonView: React.FC<FloatingButtonViewProps> = ({children}) => {
     <View style={{flex: 1}}>
       {children}
 
-      <BottomModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
+      <BottomModal
+        headerText="Add Chore"
+        isVisible={isVisible}
+        onDismiss={() => setIsVisible(false)}>
         <Text>yo</Text>
       </BottomModal>
 

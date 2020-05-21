@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import AddChoreForm from 'src/Chore/AddChoreForm';
 import BottomModal from 'src/Modal/BottomModal';
 import styled from 'styled-components/native';
 import colors from './colors';
@@ -18,7 +19,7 @@ const FloatingButtonView: React.FC<FloatingButtonViewProps> = ({children}) => {
         headerText="Add Chore"
         isVisible={isVisible}
         onDismiss={() => setIsVisible(false)}>
-        <Text>yo</Text>
+        <AddChoreForm />
       </BottomModal>
 
       <ButtonContainer onPress={() => setIsVisible(true)}>

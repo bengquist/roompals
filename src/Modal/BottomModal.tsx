@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Modal, View} from 'react-native';
+import {Alert, Modal} from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import CenterBottom from 'src/Style/CenterBottom';
 import colors from 'src/Style/colors';
@@ -36,7 +36,7 @@ const BottomModal: React.FC<BottomModalProps> = ({
               </IconContainer>
             </Header>
 
-            <View>{children}</View>
+            <ModalContentView>{children}</ModalContentView>
           </ModalView>
         </CenterBottom>
       </Modal>
@@ -48,6 +48,10 @@ const ModalView = styled.View`
   width: 100%;
   background: white;
   align-items: center;
+`;
+
+const ModalContentView = styled.View`
+  padding: 16px;
 `;
 
 const Header = styled.View`

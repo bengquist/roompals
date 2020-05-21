@@ -11,6 +11,8 @@ const Input: React.FC<InputProps> = (props) => {
 export default Input;
 
 const Container = styled.TextInput`
+  border-radius: 5px;
   border-color: gray;
-  border-bottom-width: 1px;
+  border-width: 2px;
+  padding: 16px;
 `;

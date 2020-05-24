@@ -1,5 +1,6 @@
+import {Picker} from '@react-native-community/picker';
 import React, {useState} from 'react';
-import {Picker, View} from 'react-native';
+import {View} from 'react-native';
 import Input from 'src/Style/Input';
 
 interface AddChoreFormProps {}
@@ -11,6 +12,8 @@ const AddChoreForm: React.FC<AddChoreFormProps> = ({}) => {
   return (
     <View>
       <Input
+        labelText="Title"
+        placeholder="Clean Bathroom"
         onChangeText={(text) => setRoommateName(text)}
         value={roommateName}
       />

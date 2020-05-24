@@ -51,6 +51,7 @@ const ModalView = styled.View`
 `;
 
 const ModalContentView = styled.View`
+  width: 100%;
   padding: 16px;
 `;
 

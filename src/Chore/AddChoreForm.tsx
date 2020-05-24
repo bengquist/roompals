@@ -1,30 +1,51 @@
-import {Picker} from '@react-native-community/picker';
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React, {ReactText, useState} from 'react';
+import DateInput from 'src/Style/DateInput';
 import Input from 'src/Style/Input';
+import PaddedView from 'src/Style/PaddedView';
+import PickerWithLabel from 'src/Style/PickerWithLabel';
 
 interface AddChoreFormProps {}
 
 const AddChoreForm: React.FC<AddChoreFormProps> = ({}) => {
-  const [roommateName, setRoommateName] = useState('');
-  const [choreCycle, setChoreCycle] = useState('Month');
+  const [choreName, setChoreName] = useState('');
+  const [roommateStart, setRoommateStart] = useState<ReactText>('userid1');
+  const [dateCycle, setDateCycle] = useState<ReactText>('month');
+  const [date, setDate] = useState(new Date());
 
   return (
-    <View>
+    <PaddedView>
       <Input
         labelText="Title"
         placeholder="Clean Bathroom"
-        onChangeText={(text) => setRoommateName(text)}
-        value={roommateName}
+        onChangeText={(text) => setChoreName(text)}
+        value={choreName}
       />
-      <Picker
-        onValueChange={(value) => setChoreCycle(value)}
-        selectedValue={choreCycle}>
-        <Picker.Item label="Day" value="day" />
-        <Picker.Item label="Week" value="week" />
-        <Picker.Item label="Month" value="month" />
-      </Picker>
-    </View>
+      <DateInput
+        labelText="Start Date"
+        date={date}
+        onDateChange={(selectedDate) => setDate(selectedDate)}
+      />
+      <PickerWithLabel
+        labelText="Roommate"
+        onValueChange={(value) => setRoommateStart(value)}
+        selectedValue={roommateStart}
+        pickerOptions={[
+          {label: 'Blake', value: 'userid1'},
+          {label: 'Jacob', value: 'userid2'},
+          {label: 'Jessica', value: 'userid3'},
+        ]}
+      />
+      <PickerWithLabel
+        labelText="Cycle"
+        onValueChange={(value) => setDateCycle(value)}
+        selectedValue={dateCycle}
+        pickerOptions={[
+          {label: 'Daily', value: 'daily'},
+          {label: 'Weekly', value: 'weekly'},
+          {label: 'Monthly', value: 'monthly'},
+        ]}
+      />
+    </PaddedView>
   );
 };
 

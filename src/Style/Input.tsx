@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+import {TextInput, TextInputProps} from 'react-native';
 import styled from 'styled-components/native';
 
 interface InputProps extends TextInputProps {
@@ -19,6 +19,11 @@ export default Input;
 
 const Container = styled.View`
   position: relative;
+  border-radius: 5px;
+  border-color: gray;
+  border-width: 2px;
+  padding: 4px 16px;
+  margin-bottom: 16px;
 `;
 
 const Label = styled.Text`
@@ -28,11 +33,4 @@ const Label = styled.Text`
   padding: 0 5px;
   background: white;
   z-index: 1;
-`;
-
-const TextInput = styled.TextInput`
-  border-radius: 5px;
-  border-color: gray;
-  border-width: 2px;
-  padding: 16px;
 `;

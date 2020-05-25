@@ -7,6 +7,13 @@ import Input from 'src/Style/Input';
 import Padding from 'src/Style/Padding';
 import {AuthNavProps} from './types';
 
+type RegisterValues = {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 const defaultValues = {
   username: '',
   email: '',
@@ -14,13 +21,14 @@ const defaultValues = {
   confirmPassword: '',
 };
 
-const Register: React.FC<AuthNavProps<'Register'>> = () => {
+const Register: React.FC<AuthNavProps<'Register'>> = ({navigation}) => {
   const [signup] = useSignUpMutation();
   const [errorMessage, setErrorMessage] = useState('');
 
-  const signupHandler = async (values) => {
+  const signupHandler = async (values: RegisterValues) => {
     try {
       await signup({variables: values});
+      navigation.navigate('Login');
     } catch (err) {
       setErrorMessage(err.graphQLErrors[0].message);
     }

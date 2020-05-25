@@ -71,6 +71,7 @@ export type Mutation = {
    __typename?: 'Mutation';
   createChore: Chore;
   createUserGroup: UserGroup;
+  joinUserGroup: UserGroup;
   login: LoginResponse;
   signup: Scalars['Boolean'];
   logout: Scalars['Boolean'];
@@ -85,6 +86,12 @@ export type MutationCreateChoreArgs = {
 
 export type MutationCreateUserGroupArgs = {
   data: CreateUserGroupInput;
+};
+
+
+export type MutationJoinUserGroupArgs = {
+  groupName: Scalars['String'];
+  userId: Scalars['String'];
 };
 
 
@@ -132,6 +139,20 @@ export type ChoresQuery = (
     { __typename?: 'User' }
     & Pick<User, 'id' | 'username'>
   )> }
+);
+
+export type JoinUserGroupMutationVariables = {
+  userId: Scalars['String'];
+  groupName: Scalars['String'];
+};
+
+
+export type JoinUserGroupMutation = (
+  { __typename?: 'Mutation' }
+  & { joinUserGroup: (
+    { __typename?: 'UserGroup' }
+    & Pick<UserGroup, 'id'>
+  ) }
 );
 
 export type LogInMutationVariables = {
@@ -228,6 +249,39 @@ export function useChoresLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookO
 export type ChoresQueryHookResult = ReturnType<typeof useChoresQuery>;
 export type ChoresLazyQueryHookResult = ReturnType<typeof useChoresLazyQuery>;
 export type ChoresQueryResult = ApolloReactCommon.QueryResult<ChoresQuery, ChoresQueryVariables>;
+export const JoinUserGroupDocument = gql`
+    mutation JoinUserGroup($userId: String!, $groupName: String!) {
+  joinUserGroup(userId: $userId, groupName: $groupName) {
+    id
+  }
+}
+    `;
+export type JoinUserGroupMutationFn = ApolloReactCommon.MutationFunction<JoinUserGroupMutation, JoinUserGroupMutationVariables>;
+
+/**
+ * __useJoinUserGroupMutation__
+ *
+ * To run a mutation, you first call `useJoinUserGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useJoinUserGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [joinUserGroupMutation, { data, loading, error }] = useJoinUserGroupMutation({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *      groupName: // value for 'groupName'
+ *   },
+ * });
+ */
+export function useJoinUserGroupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<JoinUserGroupMutation, JoinUserGroupMutationVariables>) {
+        return ApolloReactHooks.useMutation<JoinUserGroupMutation, JoinUserGroupMutationVariables>(JoinUserGroupDocument, baseOptions);
+      }
+export type JoinUserGroupMutationHookResult = ReturnType<typeof useJoinUserGroupMutation>;
+export type JoinUserGroupMutationResult = ApolloReactCommon.MutationResult<JoinUserGroupMutation>;
+export type JoinUserGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<JoinUserGroupMutation, JoinUserGroupMutationVariables>;
 export const LogInDocument = gql`
     mutation LogIn($user: String!, $password: String!) {
   login(user: $user, password: $password) {

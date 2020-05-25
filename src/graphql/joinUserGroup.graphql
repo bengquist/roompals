@@ -1,0 +1,5 @@
+mutation JoinUserGroup($userId: String!, $groupName: String!) {
+  joinUserGroup(userId: $userId, groupName: $groupName) {
+    id
+  }
+}

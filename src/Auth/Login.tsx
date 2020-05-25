@@ -65,7 +65,7 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
       </Center> */}
 
       <Center>
-        <Text style={{marginBottom: 24}}>Don't have an account?</Text>
+        <Text style={{marginBottom: 16}}>Don't have an account?</Text>
         <Button onPress={() => navigation.navigate('Register')}>Sign Up</Button>
       </Center>
     </Container>

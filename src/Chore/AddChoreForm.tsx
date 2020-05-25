@@ -1,7 +1,7 @@
 import React, {ReactText, useState} from 'react';
 import DateInput from 'src/Style/DateInput';
 import Input from 'src/Style/Input';
-import PaddedView from 'src/Style/PaddedView';
+import Padding from 'src/Style/Padding';
 import PickerWithLabel from 'src/Style/PickerWithLabel';
 import Button from '../Style/Button';
 
@@ -14,7 +14,7 @@ const AddChoreForm: React.FC<AddChoreFormProps> = ({}) => {
   const [date, setDate] = useState(new Date());
 
   return (
-    <PaddedView>
+    <Padding>
       <Input
         labelText="Title"
         placeholder="Clean Bathroom"
@@ -47,7 +47,7 @@ const AddChoreForm: React.FC<AddChoreFormProps> = ({}) => {
         ]}
       />
       <Button>Add</Button>
-    </PaddedView>
+    </Padding>
   );
 };
 

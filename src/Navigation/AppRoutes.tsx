@@ -1,18 +1,26 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import {useMeQuery} from 'src/generated/graphql';
 import colors from 'src/Style/colors';
 import Activity from '../Activity/Activity';
 import Money from '../Money/Money';
 import Responsibility from '../Responsibility/Responsibility';
 import Settings from '../Settings/Settings';
 import {RootParamList} from './types';
+import UserGroupRoutes from './UserGroupRoutes';
 
 interface AppRoutesProps {}
 
 const Tab = createBottomTabNavigator<RootParamList>();
 
 const AppRoutes: React.FC<AppRoutesProps> = ({}) => {
+  const {data} = useMeQuery();
+
+  if (!data?.me?.group?.id) {
+    return <UserGroupRoutes />;
+  }
+
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({

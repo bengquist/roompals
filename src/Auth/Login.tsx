@@ -3,12 +3,10 @@ import {Text} from 'react-native';
 import {useLogInMutation} from 'src/generated/graphql';
 import Button from 'src/Style/Button';
 import Center from 'src/Style/Center';
-import CircleIconButton from 'src/Style/CircleIconButton';
 import Input from 'src/Style/Input';
 import Padding from 'src/Style/Padding';
 import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
-import {SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
@@ -55,14 +53,15 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
         />
         <Button onPress={loginHandler}>Log In</Button>
       </Padding>
-
+      {/* 
+      TODO: Add social login
       <Center>
         <SocialContainer>
           <CircleIconButton icon="facebook" />
           <CircleIconButton icon="twitter" />
           <CircleIconButton icon="google" />
         </SocialContainer>
-      </Center>
+      </Center> */}
 
       <Center>
         <Text style={{marginBottom: 24}}>Don't have an account?</Text>

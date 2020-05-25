@@ -19,7 +19,7 @@ const Container = styled.TouchableOpacity`
   background: ${(props) => props.theme.colors.primary};
   padding: 16px;
   align-items: center;
-  margin-top: 16px;
+  margin: 16px 0;
 `;
 
 const ButtonText = styled.Text`

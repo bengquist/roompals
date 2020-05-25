@@ -20,6 +20,7 @@ const Input: React.FC<InputProps> = ({labelText, errorMessage, ...props}) => {
 export default Input;
 
 const Container = styled.View`
+  width: 100%;
   position: relative;
   margin-top: 16px;
 `;

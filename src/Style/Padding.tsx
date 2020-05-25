@@ -20,4 +20,7 @@ const Padding: React.FC<PaddingProps> = ({
 
 export default Padding;
 
-const Container = styled.View``;
+const Container = styled.View`
+  width: 100%;
+  align-items: center;
+`;

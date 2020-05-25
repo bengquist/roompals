@@ -6,7 +6,7 @@ interface JoinUserGroupProps {}
 
 const JoinUserGroup: React.FC<JoinUserGroupProps> = ({}) => {
   return (
-    <Center>
+    <Center flex={1}>
       <Text>yo</Text>
     </Center>
   );

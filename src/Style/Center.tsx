@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-interface CenterProps {}
+interface CenterProps {
+  flex?: number;
+}
 
-const Center: React.FC<CenterProps> = ({children}) => {
-  return <Container>{children}</Container>;
+const Center: React.FC<CenterProps> = ({flex, children}) => {
+  return <Container style={{flex}}>{children}</Container>;
 };
 
 export default Center;

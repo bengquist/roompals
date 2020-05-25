@@ -53,6 +53,7 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
         />
         <Button onPress={loginHandler}>Log In</Button>
       </Padding>
+
       {/* 
       TODO: Add social login
       <Center>

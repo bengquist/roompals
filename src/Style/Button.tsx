@@ -14,14 +14,16 @@ const Button: React.FC<Props> = ({children, ...props}) => {
 
 export default Button;
 
-const Container = styled.TouchableHighlight`
+const Container = styled.TouchableOpacity`
   width: 100%;
   background: ${(props) => props.theme.colors.primary};
   padding: 16px;
   align-items: center;
+  margin-top: 16px;
 `;
 
 const ButtonText = styled.Text`
   font-weight: bold;
+  font-size: 16px;
   color: white;
 `;

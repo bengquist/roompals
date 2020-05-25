@@ -1,8 +1,8 @@
 import React from 'react';
-import {TouchableOpacityProps} from 'react-native';
+import {TouchableHighlightProps} from 'react-native';
 import styled from 'styled-components/native';
 
-interface Props extends TouchableOpacityProps {}
+interface Props extends TouchableHighlightProps {}
 
 const Button: React.FC<Props> = ({children, ...props}) => {
   return (
@@ -14,7 +14,7 @@ const Button: React.FC<Props> = ({children, ...props}) => {
 
 export default Button;
 
-const Container = styled.TouchableOpacity`
+const Container = styled.TouchableHighlight`
   width: 100%;
   background: ${(props) => props.theme.colors.primary};
   padding: 16px;

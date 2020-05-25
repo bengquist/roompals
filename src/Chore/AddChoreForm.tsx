@@ -3,6 +3,7 @@ import DateInput from 'src/Style/DateInput';
 import Input from 'src/Style/Input';
 import PaddedView from 'src/Style/PaddedView';
 import PickerWithLabel from 'src/Style/PickerWithLabel';
+import Button from '../Style/Button';
 
 interface AddChoreFormProps {}
 
@@ -45,6 +46,7 @@ const AddChoreForm: React.FC<AddChoreFormProps> = ({}) => {
           {label: 'Monthly', value: 'monthly'},
         ]}
       />
+      <Button>Add</Button>
     </PaddedView>
   );
 };

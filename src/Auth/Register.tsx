@@ -3,10 +3,8 @@ import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import {useSignUpMutation} from 'src/generated/graphql';
 import Button from 'src/Style/Button';
-import Center from 'src/Style/Center';
-import CircleIconButton from 'src/Style/CircleIconButton';
+import Input from 'src/Style/Input';
 import Padding from 'src/Style/Padding';
-import {LoginInput, SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const defaultValues = {
@@ -34,25 +32,25 @@ const Register: React.FC<AuthNavProps<'Register'>> = () => {
         <View>
           <Padding>
             <Text>{errorMessage}</Text>
-            <LoginInput
+            <Input
               placeholder="Username"
               onChangeText={handleChange('username')}
               onBlur={handleBlur('username')}
               value={values.username}
             />
-            <LoginInput
+            <Input
               placeholder="Email"
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
               value={values.email}
             />
-            <LoginInput
+            <Input
               placeholder="Password"
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
             />
-            <LoginInput
+            <Input
               placeholder="Confirm Password"
               onChangeText={handleChange('confirmPassword')}
               onBlur={handleBlur('confirmPassword')}
@@ -61,6 +59,8 @@ const Register: React.FC<AuthNavProps<'Register'>> = () => {
             <Button onPress={handleSubmit}>Sign Up</Button>
           </Padding>
 
+          {/*
+          TODO: Add social sign ups
           <Center>
             <Text>or</Text>
           </Center>
@@ -73,7 +73,7 @@ const Register: React.FC<AuthNavProps<'Register'>> = () => {
                 <CircleIconButton icon="google" />
               </SocialContainer>
             </Center>
-          </Padding>
+          </Padding> */}
         </View>
       )}
     </Formik>

@@ -4,10 +4,11 @@ import {useLogInMutation} from 'src/generated/graphql';
 import Button from 'src/Style/Button';
 import Center from 'src/Style/Center';
 import CircleIconButton from 'src/Style/CircleIconButton';
+import Input from 'src/Style/Input';
 import Padding from 'src/Style/Padding';
 import styled from 'styled-components/native';
 import {AuthContext} from './AuthProvider';
-import {LoginInput, SocialContainer} from './styles';
+import {SocialContainer} from './styles';
 import {AuthNavProps} from './types';
 
 const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
@@ -39,13 +40,13 @@ const Login: React.FC<AuthNavProps<'Login'>> = ({navigation}) => {
 
       <Padding>
         <Text>{errorMessage}</Text>
-        <LoginInput
+        <Input
           textContentType="username"
           placeholder="Email or username"
           onChangeText={(text) => setUsername(text)}
           value={username}
         />
-        <LoginInput
+        <Input
           textContentType="password"
           secureTextEntry={true}
           placeholder="Password"

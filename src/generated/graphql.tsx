@@ -44,7 +44,7 @@ export type Chore = {
   emoji: Scalars['String'];
   cycleDate: Scalars['String'];
   isCompleted: Scalars['Boolean'];
-  user: User;
+  owner: User;
   group: UserGroup;
 };
 
@@ -53,8 +53,8 @@ export type User = {
   id: Scalars['ID'];
   username: Scalars['String'];
   email: Scalars['String'];
-  chores: Array<Chore>;
-  group: UserGroup;
+  chores?: Maybe<Array<Chore>>;
+  group?: Maybe<UserGroup>;
 };
 
 export type UserGroup = {
@@ -107,8 +107,8 @@ export type MutationRevokeRefreshTokenArgs = {
 
 export type CreateChoreInput = {
   title: Scalars['String'];
-  ownerId: Scalars['Float'];
-  groupId: Scalars['Float'];
+  ownerId: Scalars['String'];
+  groupId: Scalars['String'];
   emoji: Scalars['String'];
   cycleDate: Scalars['String'];
 };
@@ -164,6 +164,10 @@ export type MeQuery = (
   & { me?: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'id' | 'email'>
+    & { group?: Maybe<(
+      { __typename?: 'UserGroup' }
+      & Pick<UserGroup, 'id'>
+    )> }
   )> }
 );
 
@@ -291,6 +295,9 @@ export const MeDocument = gql`
   me {
     id
     email
+    group {
+      id
+    }
   }
 }
     `;
